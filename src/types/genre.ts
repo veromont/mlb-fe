@@ -1,4 +1,4 @@
-type genre = {
+export type genre = {
   id: number;
   name: string;
 };

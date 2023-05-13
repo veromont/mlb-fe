@@ -1,7 +1,8 @@
 <template>
   <div class="rectangle">
     <div class="title">{{ title }}</div>
-    <div class="director">режисер {{ director }}</div>
+    <div class="director">Режисер: {{ director }}</div>
+    <div class="genre" v-if="genre">Жанр: {{ genre }}</div>
   </div>
 </template>
 
@@ -18,6 +19,10 @@ export default defineComponent({
     director: {
       type: String,
       required: true,
+    },
+    genre: {
+      type: String,
+      required: false,
     },
   },
 });
@@ -37,11 +42,25 @@ export default defineComponent({
 .title {
   font-size: 30px;
   font-family: "Times New Roman";
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .director {
   font-size: 20px;
   font-family: Arial;
-  margin-top: auto;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.genre {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
 }
 </style>

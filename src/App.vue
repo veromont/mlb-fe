@@ -1,11 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar>
-      <nav>
-        <AboutView />
-        <HomeView />
-      </nav>
-    </v-app-bar>
+    <Toolbar class="header" />
     <v-main>
       <router-view />
     </v-main>
@@ -14,10 +9,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AboutView from "./views/AboutView.vue";
-import HomeView from "./views/HomeView.vue";
+import Toolbar from "@/Toolbar/Toolbar.vue";
 export default defineComponent({
   name: "App",
-  components: { AboutView, HomeView },
+  components: {
+    Toolbar,
+  },
 });
 </script>
+
+<style></style>

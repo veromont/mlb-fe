@@ -1,4 +1,4 @@
-type ticket = {
+export type ticket = {
   id: string;
   sessionId: string;
   seatNumber: number;

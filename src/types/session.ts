@@ -1,7 +1,9 @@
-type session = {
+export type session = {
   id: string;
-  movieId: string;
-  hallId: number;
+  movie: string;
+  hall: string;
   startTime: string;
   endTime: string;
+  hallId: number;
+  movieId: string;
 };
