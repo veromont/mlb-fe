@@ -8,13 +8,13 @@ type Store = {
   genres: genre[];
   sessions: session[];
   mode: string;
-  favGenre: string;
+  favGenres: genre[];
 };
 
 export const store = reactive<Store>({
   movies: [],
   genres: [],
   sessions: [],
-  mode: "user",
-  favGenre: "",
+  mode: "Користувач",
+  favGenres: [],
 });

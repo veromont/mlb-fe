@@ -46,10 +46,41 @@ const getPdf = async (ticketId: string) =>
       accept: "application/json",
     },
   }).then(async (response) => response.blob());
+const getMoviesByGenres = async (genres: number[]): Promise<movie[]> =>
+  fetch(`${apiBaseUrl}/Movies/genres`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify([...genres, null]),
+  }).then(async (response) => response.json());
+const addMovie = async (m: movie) => {
+  const response = await fetch(`${apiBaseUrl}/Movies`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(m),
+  });
+  return response.ok ? "Успішно збережено" : response.text();
+};
+const deleteMovie = async (id: string) =>
+  fetch(`${apiBaseUrl}/Movies?id=${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+  });
 export default {
   getMovies,
   getGenres,
   getSessions,
   bookTicket,
   getPdf,
+  getMoviesByGenres,
+  addMovie,
+  deleteMovie,
 };

@@ -1,11 +1,10 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () => import("../views/HomeView.vue"),
   },
   {
     path: "/about",
@@ -18,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/MovieSearchView.vue"),
   },
   {
+    path: "/session-search",
+    name: "SessionSearch",
+    component: () => import("../views/SessionSearchView.vue"),
+  },
+  {
     path: "/sessions",
     name: "sessions",
     component: () => import("../views/SessionsView.vue"),
@@ -26,6 +30,16 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile",
     name: "profile",
     component: () => import("../views/ProfileView.vue"),
+  },
+  {
+    path: "/add-movie",
+    name: "addMovie",
+    component: () => import("../views/AddMovieView.vue"),
+  },
+  {
+    path: "/add-session",
+    name: "addSession",
+    component: () => import("../views/AddSessionView.vue"),
   },
 ];
 

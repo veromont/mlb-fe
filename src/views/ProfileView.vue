@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="text-center mb-4">My Profile</h1>
+    <h1 class="text-center mb-4">Мій профіль</h1>
     <div class="row">
       <div class="col-md-4">
         <div class="card mb-4">
@@ -31,7 +31,7 @@
           <div class="card-body">
             <h5 class="card-title">Про себе</h5>
             <div class="form-group">
-              <label for="bio">Bio</label>
+              <label for="bio">Коментар</label>
               <textarea
                 class="form-control"
                 id="bio"
@@ -50,21 +50,33 @@
             </div>
             <div class="form-group">
               <label for="favorite-genre">Улюблений жанр</label>
-              <input
-                type="text"
+              <select
                 class="form-control"
                 id="favorite-genre"
-                v-model="store.favGenre"
-              />
+                v-model="store.favGenres"
+                multiple
+              >
+                <option
+                  v-for="genre in store.genres"
+                  :key="genre.id"
+                  :value="genre"
+                >
+                  {{ genre.name }}
+                </option>
+              </select>
             </div>
             <div class="form-group">
               <label for="favorite-genre">Роль</label>
-              <input
-                type="text"
-                class="form-control"
-                id="favorite-genre"
-                v-model="store.mode"
-              />
+              <div style="display: flex; flex-direction: row">
+                <input
+                  disabled
+                  type="text"
+                  class="form-control"
+                  id="favorite-genre"
+                  v-model="store.mode"
+                />
+                <toggle-mode-button />
+              </div>
             </div>
           </div>
         </div>
@@ -97,8 +109,20 @@
 </template>
 
 <script lang="ts">
+import api from "@/api";
 import { store } from "@/store/Store";
+import { onMounted } from "vue";
+import toggleModeButton from "@/features/toggleModeButton.vue";
 export default {
+  components: {
+    toggleModeButton,
+  },
+  setup() {
+    onMounted(() => {
+      api.getGenres().then((data) => (store.genres = data));
+    });
+    return { store };
+  },
   data() {
     return {
       user: {
@@ -108,9 +132,7 @@ export default {
         favoriteMovie: "The Godfather",
         email: "johndoe@example.com",
         phone: "555-555-5555",
-
       },
-      store,
     };
   },
 };
@@ -151,5 +173,19 @@ export default {
   border-color: #007bff;
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 </style>

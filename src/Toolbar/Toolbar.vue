@@ -7,6 +7,14 @@
       <div id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <router-link
+              v-if="store.mode === 'Адміністратор'"
+              class="nav-link"
+              to="/add-movie"
+              >Додати фільм</router-link
+            >
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" to="/profile">Профіль</router-link>
           </li>
           <li class="nav-item">
@@ -30,8 +38,13 @@
 </template>
 
 <script lang="ts">
+import { store } from "@/store/Store";
+
 export default {
   name: "Toolbar",
+  setup() {
+    return { store };
+  },
 };
 </script>
 
@@ -57,10 +70,15 @@ export default {
 @media (max-width: 991.98px) {
   .navbar-brand {
     font-size: 1.2rem;
+    cursor: pointer;
   }
 
   .nav-link {
     font-size: 1rem;
+    cursor: pointer;
+  }
+  .nav-link:hover {
+    background-color: rgba(255, 208, 0, 0.815);
   }
 }
 </style>

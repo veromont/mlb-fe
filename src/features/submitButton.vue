@@ -1,32 +1,14 @@
 <template>
-  <v-btn class="pretty-button" @click="downloadFile">Забронювати квиток</v-btn>
+  <v-btn class="pretty-button" @click="func"> Зберегти </v-btn>
 </template>
 
 <script lang="ts">
-import api from "@/api";
-
 export default {
-  name: "BookTicketButton",
+  name: "submitButton",
   props: {
-    sessionId: {
-      type: String,
+    func: {
+      type: Function,
       required: true,
-    },
-  },
-  methods: {
-    async downloadFile() {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const ticketId = await api.bookTicket(this.sessionId);
-      const blob = await api.getPdf(ticketId);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Квиток.pdf";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     },
   },
 };
