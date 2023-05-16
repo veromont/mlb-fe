@@ -1,6 +1,7 @@
 import { genre } from "./types/genre";
 import { movie } from "./types/movie";
 import { session } from "./types/session";
+import { format } from "date-fns";
 
 const apiBaseUrl = "https://localhost:7043/api";
 
@@ -74,6 +75,29 @@ const deleteMovie = async (id: string) =>
       accept: "application/json",
     },
   });
+const addSession = async (m: session) => {
+  const response = await fetch(`${apiBaseUrl}/Sessions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(m),
+  });
+  return response.ok ? "Успішно збережено" : response.text();
+};
+const getPremieres = async () =>
+  fetch(`${apiBaseUrl}/Movies/date-interval`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify({
+      dateFrom: format(new Date(), "yyyy-MM-dd"),
+      dateTo: "2999-12-12",
+    }),
+  }).then(async (response) => response.json());
 export default {
   getMovies,
   getGenres,
@@ -83,4 +107,6 @@ export default {
   getMoviesByGenres,
   addMovie,
   deleteMovie,
+  addSession,
+  getPremieres,
 };

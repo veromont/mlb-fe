@@ -18,7 +18,7 @@
             <router-link class="nav-link" to="/profile">Профіль</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/premieras">Прем'єри</router-link>
+            <router-link class="nav-link" to="/premieres">Прем'єри</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/movie-search"

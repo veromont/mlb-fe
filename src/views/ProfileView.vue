@@ -126,11 +126,11 @@ export default {
   data() {
     return {
       user: {
-        name: "John Doe",
-        username: "marvel_enjoyer_228",
-        bio: "I love movies and spend most of my free time watching them. My favorite movie of all time is The Godfather.",
-        favoriteMovie: "The Godfather",
-        email: "johndoe@example.com",
+        name: "Animal",
+        username: "math_analysis_enjoyer_228",
+        bio: "те саме звірятко з лісу",
+        favoriteMovie: "Лекція 4(2). Послідовності. Границі послідовності",
+        email: "animal@example.com",
         phone: "555-555-5555",
       },
     };

@@ -17,11 +17,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/MovieSearchView.vue"),
   },
   {
-    path: "/session-search",
-    name: "SessionSearch",
-    component: () => import("../views/SessionSearchView.vue"),
-  },
-  {
     path: "/sessions",
     name: "sessions",
     component: () => import("../views/SessionsView.vue"),
@@ -40,6 +35,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/add-session",
     name: "addSession",
     component: () => import("../views/AddSessionView.vue"),
+  },
+  {
+    path: "/premieres",
+    name: "premires",
+    component: () => import("../views/PremieresView.vue"),
   },
 ];
 

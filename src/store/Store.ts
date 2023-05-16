@@ -9,6 +9,8 @@ type Store = {
   sessions: session[];
   mode: string;
   favGenres: genre[];
+  focusMovieName: string;
+  focusMovieId: string;
 };
 
 export const store = reactive<Store>({
@@ -17,4 +19,6 @@ export const store = reactive<Store>({
   sessions: [],
   mode: "Користувач",
   favGenres: [],
+  focusMovieId: "",
+  focusMovieName: "",
 });

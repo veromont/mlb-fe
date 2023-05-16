@@ -5,6 +5,7 @@
       <div class="director">Режисер: {{ director }}</div>
       <div class="genre" v-if="genre">Жанр: {{ genre }}</div>
     </div>
+    <div class="date" v-if="premiereDate">Прем'єра {{ premiereDate }}!</div>
     <div v-if="store.mode === 'Адміністратор'" class="icons-holder">
       <mdicon class="icon" size="0" name="delete" :onclick="deleteMovie" />
       <mdicon class="icon" size="0" name="pencil" />
@@ -45,6 +46,10 @@ export default defineComponent({
       type: String,
       required: false,
     },
+    premiereDate: {
+      type: String,
+      required: false,
+    },
   },
   methods: {
     deleteMovie() {
@@ -52,6 +57,8 @@ export default defineComponent({
       api.getMovies().then((data) => (store.movies = data));
     },
     goToAddSessionView() {
+      store.focusMovieId = this.id;
+      store.focusMovieName = this.title;
       this.$router.push("/add-session");
     },
   },
@@ -97,7 +104,12 @@ export default defineComponent({
   margin-bottom: 10px;
   color: chocolate;
 }
-
+.date {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: red;
+}
 .icons-holder {
   position: absolute;
   top: 10px;

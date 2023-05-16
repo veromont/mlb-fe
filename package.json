@@ -12,6 +12,7 @@
     "@mdi/js": "^7.2.96",
     "@types/bootstrap": "^5.2.6",
     "bootstrap": "^5.2.3",
+    "date-fns": "^2.30.0",
     "jquery": "^3.6.4",
     "mdi-vue": "^3.0.13",
     "popper.js": "^1.16.1",
